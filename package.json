@@ -1,0 +1,38 @@
+{
+  "name": "statbet",
+  "version": "1.0.0",
+  "description": "StatBet · La Bolsa de Hipótesis. Evaluación gamificada en tiempo real de Análisis Cuantitativo de Datos: apuestas de confianza sobre afirmaciones estadísticas.",
+  "private": true,
+  "type": "module",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test \"tests/**/*.test.js\"",
+    "validate:statements": "node scripts/validate-statements.js",
+    "load-test": "node scripts/load-test.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/sora": "^5.3.0",
+    "compression": "^1.8.2",
+    "exceljs": "^4.4.0",
+    "express": "^5.3.0",
+    "htm": "^3.1.1",
+    "ioredis": "^5.11.1",
+    "preact": "^11.0.1",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.4",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.4"
+  },
+  "overrides": {
+    "uuid": "^11.1.1"
+  }
+}

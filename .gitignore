@@ -1,0 +1,8 @@
+node_modules/
+.data/
+.env
+*.log
+.DS_Store
+.shots/
+cursor_escape_room_statistical_design.md
+*.pdf
