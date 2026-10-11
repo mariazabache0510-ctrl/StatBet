@@ -554,7 +554,7 @@ export function createMarketScene(canvas) {
     camera.position.copy(camState.pos);
     camera.lookAt(camState.look);
 
-    const showHero = mode === 'lobby' || mode === 'finished';
+    const showHero = mode === 'lobby';
     hero.visible = showHero || hero.scale.x > 0.02;
     const hs = THREE.MathUtils.lerp(hero.scale.x, showHero ? 1 : 0.001, reduced ? 1 : 1 - Math.exp(-dt * 4));
     hero.scale.setScalar(hs);

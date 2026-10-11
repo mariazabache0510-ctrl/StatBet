@@ -1,134 +1,239 @@
-# StatBet · La Bolsa de Hipótesis
+<div align="center">
 
-Evaluación gamificada en tiempo real para **Análisis Cuantitativo de Datos** (estimación, pruebas de hipótesis, regresión lineal y ANOVA). Es la continuación de *TimeQuest / El Laboratorio Sellado*: mismo stack, misma forma de desplegar, pero ahora el reto no es solo acertar sino **saber lo que se sabe**.
+<img src="https://capsule-render.vercel.app/api?type=waving&height=210&color=0:ff4f9a,55:a78bfa,100:22d3ee&text=StatBet&fontColor=ffffff&fontSize=72&fontAlignY=36&desc=La%20Bolsa%20de%20Hip%C3%B3tesis&descSize=22&descAlignY=58&animation=fadeIn" alt="StatBet · La Bolsa de Hipótesis" width="100%"/>
 
-Cada estudiante entra desde el celular, recibe **100 fichas** y juega solo. En cada ronda aparece una afirmación estadística (rotando por tema), por ejemplo:
+<a href="https://statbet-g0hj.onrender.com/moderador"><img src="https://readme-typing-svg.demolab.com?font=Sora&weight=600&size=20&duration=3200&pause=900&color=FF4F9A&center=true&vCenter=true&width=620&lines=%C2%BFVerdadero+o+falso%3F+Apuesta+seg%C3%BAn+lo+que+sabes;Gana+quien+acierta+y+sabe+cu%C3%A1nto+sabe;Estimaci%C3%B3n+%C2%B7+Hip%C3%B3tesis+%C2%B7+Regresi%C3%B3n+%C2%B7+ANOVA" alt="Apuesta según lo que sabes"/></a>
 
-> «Con este intervalo del 95 %, podemos asegurar que la media real está entre 12 y 15.»
+<p>
+<img src="https://img.shields.io/badge/Node.js-20%2B-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js 20+"/>
+<img src="https://img.shields.io/badge/Express-5-000000?style=flat-square&logo=express&logoColor=white" alt="Express 5"/>
+<img src="https://img.shields.io/badge/Socket.IO-4.8-010101?style=flat-square&logo=socketdotio&logoColor=white" alt="Socket.IO"/>
+<img src="https://img.shields.io/badge/Three.js-r186-000000?style=flat-square&logo=threedotjs&logoColor=white" alt="Three.js"/>
+<img src="https://img.shields.io/badge/Preact-htm-673AB8?style=flat-square&logo=preact&logoColor=white" alt="Preact + htm"/>
+<img src="https://img.shields.io/badge/Valkey-Render_Key_Value-DC382D?style=flat-square&logo=redis&logoColor=white" alt="Render Key Value"/>
+<br/>
+<img src="https://img.shields.io/badge/tests-27_passing-2dd4a7?style=flat-square&logo=nodedotjs&logoColor=white" alt="27 pruebas"/>
+<img src="https://img.shields.io/badge/deploy-Render-46E3B7?style=flat-square&logo=render&logoColor=white" alt="Render"/>
+<img src="https://img.shields.io/badge/UI-mobile_first-ff4f9a?style=flat-square" alt="Mobile first"/>
+<img src="https://img.shields.io/badge/idioma-espa%C3%B1ol-22d3ee?style=flat-square" alt="Español"/>
+</p>
 
-Decide si es **Verdadera** o **Falsa** y cuántas fichas apuesta según qué tan seguro está. Si acierta gana lo apostado; si falla lo pierde. Al revelar, el proyector muestra en una mesa 3D cómo apostó el salón, la explicación y el error de concepto que la afirmación delata. Al final, la nota combina **aciertos** y **calibración**, y el docente recibe un reporte de los conceptos donde el curso apostó seguro y falló.
+<a href="https://statbet-g0hj.onrender.com/moderador"><img src="https://img.shields.io/badge/Ver_demo_en_vivo-ff4f9a?style=for-the-badge&logo=render&logoColor=white" alt="Demo en vivo"/></a>
+&nbsp;
+<a href="https://render.com/deploy?repo=https://github.com/mariazabache0510-ctrl/StatBet"><img src="https://img.shields.io/badge/Desplegar_en_Render-22d3ee?style=for-the-badge&logo=render&logoColor=0b1026" alt="Desplegar en Render"/></a>
 
-| Pantalla | Ruta | Quién la usa |
-| --- | --- | --- |
-| Estudiante | `/` (o `/?sala=CÓDIGO` desde el QR) | Cada estudiante en su celular |
-| Panel del moderador | `/moderador` | Docente (pide la clave) |
-| Proyector (mesa 3D) | `/proyector?sala=CÓDIGO` | Pantalla del salón |
-| Informe imprimible / PDF | `/informe?sala=CÓDIGO` | Docente, después de la partida |
+</div>
 
----
+<br/>
 
-## 1. Ejecutar en tu computador
+StatBet es una actividad de evaluación en tiempo real para la clase de **Análisis Cuantitativo de Datos**. Cada estudiante entra desde su celular con 100 fichas y, ronda a ronda, ve una afirmación estadística: tiene que decidir si es verdadera o falsa y cuántas fichas arriesga según qué tan seguro está. Si acierta, gana lo apostado; si falla, lo pierde.
 
-Requisitos: **Node.js 20 o superior**.
+La idea de fondo es medir algo que un examen tradicional no ve: **si el estudiante sabe lo que sabe**. Quien apuesta todo y falla deja ver un error de concepto; quien acierta pero apostó poco todavía tiene dudas. Por eso la nota final combina los aciertos con la calibración de la confianza, y el docente recibe un informe con los conceptos en los que el curso apostó seguro y se equivocó.
 
-```bash
-npm install
-npm run dev        # recarga automática al editar; o "npm start"
+<p align="center">
+  <img src="docs/img/proyector-revelacion.jpg" alt="Proyector: revelación de una afirmación" width="100%"/>
+  <br/><sub>El proyector al revelar una afirmación: la bolsa se reparte entre Verdadero y Falso, el banco paga a los ganadores y a los lados aparecen la explicación y el error frecuente.</sub>
+</p>
+
+## Contenido
+
+- [Cómo se juega](#cómo-se-juega)
+- [Qué se evalúa](#qué-se-evalúa)
+- [Capturas](#capturas)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologías](#tecnologías)
+- [Arquitectura](#arquitectura)
+- [Ejecutar en local](#ejecutar-en-local)
+- [Despliegue](#despliegue)
+- [El banco de afirmaciones](#el-banco-de-afirmaciones)
+- [Estructura del proyecto](#estructura-del-proyecto)
+
+## Cómo se juega
+
+| | |
+|---|---|
+| **1. Entrar** | El docente proyecta la sala. Los estudiantes escanean el QR, escriben su nombre y reciben 100 fichas. |
+| **2. Apostar** | Aparece una afirmación, por ejemplo *«Un R² de 0,81 prueba que estudiar más causa mejores notas»*. Cada quien elige Verdadera o Falsa y mueve el control de fichas: apostar poco es decir «no estoy seguro», apostar todo es decir «estoy 100 % seguro». |
+| **3. Revelar** | Se cierran las apuestas y el proyector muestra cómo apostó el salón, la respuesta correcta, la explicación y el error de concepto que la afirmación busca destapar. |
+| **4. Cerrar** | Tras rotar por los cuatro temas, el proyector muestra si el salón «sabe lo que sabe» y revela el podio. Cada estudiante ve su nota y su mapa de confianza en el celular. |
+
+## Qué se evalúa
+
+Cada apuesta se traduce en una probabilidad declarada. Si un estudiante arriesga la fracción `c` de sus fichas, está diciendo que cree acertar con probabilidad `p = 0,5 + 0,5·c`. Con eso se calcula la **puntuación de Brier** de la ronda, `s = 1 − (o − p)²`, donde `o` vale 1 si acertó y 0 si no.
+
+La nota (de 0 a 5) pondera dos partes, con pesos que el docente puede ajustar:
+
+```
+Nota = 0,6 × aciertos (0–5) + 0,4 × calibración (0–5)
 ```
 
-Abre <http://localhost:3000/moderador>. En desarrollo la clave por defecto es **`profe123`** (cámbiala con la variable `MODERATOR_KEY`).
+Brier es una regla de puntuación *propia*: la estrategia que da mejor resultado esperado es apostar exactamente según la seguridad real. Ni ir siempre con todo ni apostar siempre lo mínimo funciona, y hay pruebas automáticas que lo verifican.
 
-### Probar con celulares reales en la misma red Wi-Fi
-
-1. Averigua la IP de tu computador (`ipconfig` en Windows, busca "Dirección IPv4", por ejemplo `192.168.1.40`).
-2. Abre el panel y el proyector usando esa IP: `http://192.168.1.40:3000/moderador`. Así el QR del proyector apunta a una dirección que los celulares sí alcanzan (otra opción: define `PUBLIC_URL=http://192.168.1.40:3000`).
-3. Si Windows pregunta por el firewall, permite el acceso de Node en redes privadas.
-
-### Variables de entorno
-
-Todas son opcionales en local; en producción solo `MODERATOR_KEY` es obligatoria. Ver [`.env.example`](.env.example).
-
-| Variable | Para qué sirve | Por defecto |
-| --- | --- | --- |
-| `MODERATOR_KEY` | Clave del panel del moderador | `profe123` (solo en desarrollo) |
-| `PORT` | Puerto HTTP | `3000` (Render lo define solo) |
-| `REDIS_URL` | Guarda salas y banco en Render Key Value | vacío = archivos en `.data/` |
-| `PUBLIC_URL` | URL base del QR y del enlace de ingreso | En Render usa `RENDER_EXTERNAL_URL` |
-| `ROOM_TTL_HOURS` | Horas que se conserva una sala sin actividad | `12` |
-| `STATEMENTS_FILE` | Banco de afirmaciones inicial | `data/statements.json` |
-| `MAX_PLAYERS_PER_ROOM` | Tope de jugadores por sala | `80` |
-
----
-
-## 2. Pruebas automáticas y herramientas
-
-```bash
-npm test                       # 27 pruebas: puntuación, calibración, motor de la bolsa, reporte y exportaciones
-npm run validate:statements    # valida data/statements.json (o: npm run validate:statements -- otra-ruta.json)
-npm run load-test              # simula un salón con 25 bots que apuestan y conduce la partida completa
-```
-
-Opciones de la prueba de carga (con el servidor encendido):
-
-| Comando | Qué hace |
-| --- | --- |
-| `npm run load-test -- --bots 60 --pace 1` | Más bots y menos pausa entre rondas |
-| `npm run load-test -- --hold` | Crea la sala y une los bots, pero tú conduces desde el panel (ideal para ver el proyector) |
-| `npm run load-test -- --code ABC12` | Une bots a una sala que ya creaste |
-| `npm run load-test -- --url https://statbet.onrender.com --key TU_CLAVE` | Contra el servidor desplegado |
-
-Al terminar imprime la latencia de las apuestas y el podio.
-
-### Pruebas manuales recomendadas antes de la clase
-
-1. Abre `/moderador`, crea una sala y abre el proyector en otra ventana (o en el televisor).
-2. Entra desde dos celulares (o un celular y una ventana de incógnito) con nombres distintos.
-3. Inicia, apuesta desde ambos, cierra, revela y avanza un par de rondas. Comprueba que el celular muestra «Ganaste / Perdiste» y el cuadrante (Dominio, Duda, Prudencia, Error de concepto).
-4. Recarga el celular a mitad de una ronda: debe volver a la partida con sus fichas y su apuesta.
-5. Termina la partida, revela el podio y abre el informe desde la pestaña **Resultados**.
-
----
-
-## 3. Guía para el día de la clase
-
-1. **Antes**: abre el panel, revisa en **Ajustes** cuántas afirmaciones por tema (3 por defecto = 12 rondas) y los segundos por ronda (45). En **Banco** puedes editar, desactivar o agregar afirmaciones.
-2. **Sala de espera**: proyecta `/proyector?sala=CÓDIGO`. Muestra el QR, el código y quién va entrando. Explica las reglas con la tarjeta del celular: apostar poco = «no estoy seguro», apostar todo = «estoy 100 % seguro».
-3. **Cada ronda** (pestaña **En vivo**):
-   - La afirmación aparece en el proyector y en los celulares; las fichas caen a la *bolsa* de la mesa sin revelar hacia qué lado.
-   - La ronda se cierra sola al acabar el tiempo o cuando todos apostaron. Puedes **Cerrar**, dar **+15 s** o **Pausar**.
-   - **Revelar**: la bolsa se reparte entre Verdadero (cian) y Falso (rosa), el banco cobra a los perdedores y paga doble a los ganadores. A los lados aparecen la distribución de seguridad, cuántos fallaron muy seguros, la explicación y el error frecuente.
-   - **Siguiente** para continuar. El interruptor *spoiler* del panel muestra la respuesta correcta solo en tu pantalla.
-4. **Cierre**: el proyector muestra «¿El salón sabe lo que sabe?» con los conceptos críticos, el acierto por tema y la curva de calibración. Luego **Revelar podio** muestra los *Lobos de la Bolsa* (por patrimonio) y el *Oráculo* (mejor calibración).
-5. **Después**: en **Resultados** descarga el Excel o abre el informe imprimible (Ctrl+P → Guardar como PDF).
-
-Las notas **no** se muestran en el proyector: cada estudiante ve la suya en el celular y el docente las ve en el panel y en el informe.
-
----
-
-## 4. Cómo se califica
-
-Para cada apuesta:
-
-- **Confianza** $c$ = fichas apostadas ÷ fichas disponibles al abrir la ronda (0 a 1).
-- **Probabilidad declarada** $p = 0{,}5 + 0{,}5\,c$: apostar casi nada es «moneda al aire» (50 %), apostar todo es «seguro al 100 %».
-- **Calibración de la ronda** (puntuación de Brier): $s = 1 - (o - p)^2$, con $o = 1$ si acertó y $o = 0$ si falló. No apostar cuenta como $p = 0{,}5$ y como no acertada.
-
-Nota final (0 a 5):
-
-$$
-\text{Nota} = 0{,}6 \cdot \underbrace{5 \cdot \tfrac{\text{aciertos}}{\text{rondas}}}_{\text{aciertos}} + 0{,}4 \cdot \underbrace{5 \cdot \operatorname{clamp}\left(\tfrac{\bar s - 0{,}5}{0{,}5}\right)}_{\text{calibración}}
-$$
-
-Los pesos (0,6 / 0,4) se cambian en **Ajustes**; el panel muestra cómo quedaría la nota en escenarios típicos (apostar siempre todo, siempre lo mínimo, apostar según la seguridad real…). La puntuación de Brier es una regla *propia*: la mejor estrategia esperada es apostar exactamente según lo seguro que uno está.
-
-Cada apuesta cae en un cuadrante (umbral de confianza 50 %):
+Cada apuesta además cae en uno de cuatro cuadrantes:
 
 | | Apostó poco | Apostó fuerte |
-| --- | --- | --- |
+|---|---|---|
 | **Acertó** | Duda: sabe, pero todavía duda | Dominio: sabe que sabe |
 | **Falló** | Prudencia: sabe que no sabe | **Error de concepto**: cree saber algo que no es así |
 
-El **índice de riesgo** de una afirmación es la confianza promedio perdida (la confianza de quienes fallaron, contando 0 a quienes acertaron). El reporte de conceptos críticos ordena las afirmaciones por ese índice: arriba quedan las que el curso falló apostando fuerte.
+El informe del docente ordena las afirmaciones por **índice de riesgo**, la confianza promedio que se perdió en cada una. Arriba quedan los errores más graves: los que el curso cometió convencido de tener la razón.
 
-**Rescate del banco**: si al abrir una ronda un estudiante tiene menos fichas que la apuesta mínima (5), el banco le presta 30 para que siga jugando. El ranking del juego usa el patrimonio neto (fichas − préstamos), así que el préstamo no regala puestos.
+## Capturas
 
-Insignias: Oráculo, Lobo de la Bolsa, Pleno estadístico, Racha alcista, All-in ganador, Sabe lo que no sabe y Remontada.
+<table>
+<tr>
+<td width="50%"><img src="docs/img/proyector-sala.jpg" alt="Sala de espera"/><br/><sub><b>Sala de espera.</b> QR, código y la lista de quienes van entrando.</sub></td>
+<td width="50%"><img src="docs/img/proyector-apuestas.jpg" alt="Apuestas abiertas"/><br/><sub><b>Apuestas abiertas.</b> Las fichas caen a la bolsa sin revelar hacia qué lado van.</sub></td>
+</tr>
+<tr>
+<td><img src="docs/img/proyector-cierre.jpg" alt="Cierre del mercado"/><br/><sub><b>Cierre.</b> Conceptos críticos, acierto por tema y curva de calibración del curso.</sub></td>
+<td><img src="docs/img/proyector-podio.jpg" alt="Podio"/><br/><sub><b>Podio.</b> Torres de fichas para los tres primeros y el premio a la mejor calibración.</sub></td>
+</tr>
+</table>
 
----
+<table>
+<tr>
+<td width="33%" align="center"><img src="docs/img/movil-apuesta.jpg" alt="Apuesta en el celular" width="250"/><br/><sub><b>Apostar.</b> Lado, fichas y cuánto se gana o se pierde.</sub></td>
+<td width="33%" align="center"><img src="docs/img/movil-revelacion.jpg" alt="Resultado de la ronda" width="250"/><br/><sub><b>Revelación.</b> Resultado, cuadrante y explicación.</sub></td>
+<td width="33%" align="center"><img src="docs/img/movil-resultado.jpg" alt="Nota final" width="250"/><br/><sub><b>Final.</b> Nota, calibración y mapa de confianza.</sub></td>
+</tr>
+</table>
 
-## 5. Editar las afirmaciones
+<table>
+<tr>
+<td width="50%"><img src="docs/img/panel-en-vivo.jpg" alt="Panel del docente"/><br/><sub><b>Panel del docente.</b> Control de la ronda y apuestas en vivo (solo el docente ve el reparto).</sub></td>
+<td width="50%"><img src="docs/img/informe.jpg" alt="Informe imprimible"/><br/><sub><b>Informe.</b> Listo para imprimir o guardar como PDF.</sub></td>
+</tr>
+</table>
 
-El banco inicial está en [`data/statements.json`](data/statements.json) (28 afirmaciones, 7 por tema). Cada afirmación tiene:
+## Funcionalidades
+
+**Para el estudiante (celular)**
+- Ingreso con QR o código, sin cuentas ni contraseñas. Si recarga la página, vuelve a la partida con sus fichas y su apuesta.
+- Control de apuesta con atajos (10 %, 25 %, 50 %, todo) y una vista previa de lo que gana o pierde.
+- Después de cada ronda: resultado, cuadrante, explicación y cómo apostó el resto del salón.
+- Pantalla final con nota, desglose de la fórmula, insignias, mapa de confianza y repaso de cada apuesta.
+- Si se queda sin fichas, el banco le presta para que siga jugando (el préstamo se descuenta del ranking).
+
+**Para el proyector**
+- Mesa 3D con fichas que caen a la bolsa, se reparten al revelar y se apilan en el podio.
+- Ranking en forma de cinta bursátil, contador de tiempo, sonidos y modo pantalla completa.
+- Las notas nunca se proyectan: en pantalla solo aparece el juego.
+
+**Para el docente**
+- Varias salas a la vez, control total de la ronda (cerrar, sumar tiempo, pausar, revelar, avanzar) y modo «spoiler» que muestra la respuesta solo en su pantalla.
+- Ajustes de partida: afirmaciones por tema, segundos por ronda, fichas iniciales, apuesta mínima, rescate y pesos de la nota con vista previa de escenarios.
+- Editor del banco de afirmaciones con búsqueda, importación y exportación en JSON.
+- Exportación a Excel y CSV, e informe imprimible con conceptos críticos, resultados por tema, curva de calibración y notas.
+
+## Tecnologías
+
+| Capa | Herramientas | Para qué |
+|---|---|---|
+| Servidor | ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white) | API HTTP, exportaciones y archivos estáticos |
+| Tiempo real | ![Socket.IO](https://img.shields.io/badge/Socket.IO-010101?style=flat-square&logo=socketdotio&logoColor=white) | Canales separados por rol: estudiante, proyector y docente |
+| Interfaz | ![Preact](https://img.shields.io/badge/Preact-673AB8?style=flat-square&logo=preact&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) | Preact + htm con módulos ES nativos, sin paso de compilación |
+| 3D | ![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=threedotjs&logoColor=white) | Mesa, fichas instanciadas y cámara del proyector |
+| Persistencia | ![Redis](https://img.shields.io/badge/Render_Key_Value-DC382D?style=flat-square&logo=redis&logoColor=white) | Salas y banco con ioredis; en local, archivos JSON |
+| Reportes | ![Excel](https://img.shields.io/badge/ExcelJS-217346?style=flat-square&logo=microsoftexcel&logoColor=white) | Libro de Excel con resultados, conceptos y apuestas |
+| Pruebas | ![node:test](https://img.shields.io/badge/node:test-339933?style=flat-square&logo=nodedotjs&logoColor=white) | Puntuación, motor de rondas, reporte y exportaciones |
+| Despliegue | ![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=white) | Blueprint con servicio web y Key Value |
+
+## Arquitectura
+
+```mermaid
+flowchart LR
+    subgraph Clientes
+        E["Celulares<br/>(estudiantes)"]
+        P["Proyector<br/>(mesa 3D)"]
+        D["Panel del docente"]
+    end
+    subgraph Servidor["Servidor Node.js"]
+        WS["Socket.IO<br/>vistas por rol"]
+        API["Express<br/>API · exportaciones"]
+        M["Motor de la bolsa<br/>rondas · apuestas · rescate"]
+        S["Puntuación<br/>Brier · cuadrantes · informe"]
+    end
+    KV[("Render Key Value")]
+    E <--> WS
+    P <--> WS
+    D <--> WS
+    D --> API
+    WS --> M
+    M --> S
+    M <--> KV
+```
+
+El servidor es la única fuente de verdad. La respuesta correcta y el reparto de las apuestas no salen de él hasta que el docente revela, así que nadie puede adivinar la respuesta mirando el tráfico del navegador. Cada rol recibe su propia vista del estado, y las apuestas se validan en el servidor (ronda abierta, apuesta mínima y saldo disponible).
+
+Las decisiones de diseño y su justificación están en [`docs/DECISIONES.md`](docs/DECISIONES.md).
+
+## Ejecutar en local
+
+Requiere **Node.js 20 o superior**.
+
+```bash
+npm install
+npm run dev
+```
+
+Abre <http://localhost:3000/moderador> e ingresa con la clave `profe123` (solo en desarrollo). Desde el panel se crea la sala y se abre el proyector.
+
+Para probar con celulares en la misma red Wi-Fi, abre el panel usando la IP del computador (por ejemplo `http://192.168.1.40:3000/moderador`) para que el QR apunte a una dirección alcanzable, y permite a Node en el firewall de Windows si lo pregunta.
+
+<details>
+<summary><b>Variables de entorno</b></summary>
+<br/>
+
+Todas son opcionales en local. En producción solo `MODERATOR_KEY` es obligatoria. Hay una plantilla en [`.env.example`](.env.example).
+
+| Variable | Uso | Por defecto |
+|---|---|---|
+| `MODERATOR_KEY` | Clave del panel del docente | `profe123` en desarrollo |
+| `PORT` | Puerto HTTP | `3000` |
+| `REDIS_URL` | Conexión a Render Key Value | vacío: archivos en `.data/` |
+| `PUBLIC_URL` | Dirección del QR y del enlace de ingreso | En Render, `RENDER_EXTERNAL_URL` |
+| `ROOM_TTL_HOURS` | Horas que se conserva una sala inactiva | `12` |
+| `STATEMENTS_FILE` | Banco de afirmaciones inicial | `data/statements.json` |
+| `MAX_PLAYERS_PER_ROOM` | Tope de jugadores por sala | `80` |
+
+</details>
+
+<details>
+<summary><b>Pruebas y herramientas</b></summary>
+<br/>
+
+```bash
+npm test                      # 27 pruebas con node:test
+npm run validate:statements   # revisa data/statements.json
+npm run load-test             # 25 bots juegan una partida completa contra el servidor
+```
+
+La prueba de carga acepta `--bots 60`, `--pace 1`, `--hold` (une los bots y deja que el docente conduzca desde el panel), `--code ABC12` (une bots a una sala existente) y `--url` / `--key` para probar contra el servidor desplegado. Al final muestra la latencia de las apuestas y el podio.
+
+</details>
+
+<details>
+<summary><b>Guía rápida para el día de la clase</b></summary>
+<br/>
+
+1. Abre el panel unos minutos antes (en el plan gratuito de Render el servicio tarda en despertar). Revisa en **Ajustes** cuántas afirmaciones por tema habrá: con 3, la partida tiene 12 rondas y dura unos 15 minutos.
+2. Proyecta la sala y explica la regla clave: apostar poco es «no estoy seguro», apostar todo es «estoy seguro».
+3. En la pestaña **En vivo** conduces cada ronda. Se cierra sola cuando se acaba el tiempo o cuando todos apostaron.
+4. Al terminar, muestra el cierre del mercado, comenta los conceptos críticos y revela el podio.
+5. En **Resultados** descargas el Excel o abres el informe para guardarlo en PDF.
+
+</details>
+
+## Despliegue
+
+El repositorio incluye un Blueprint de Render ([`render.yaml`](render.yaml)) con un servicio web y una instancia de Key Value, ambos en plan gratuito. Basta con usar el botón **Desplegar en Render** de arriba o crear un Blueprint desde el dashboard; Render pedirá la `MODERATOR_KEY`.
+
+El Key Value guarda las salas y el banco aunque el servicio se reinicie. El plan gratuito del servicio web se suspende tras 15 minutos sin tráfico, así que conviene abrir el panel antes de la clase.
+
+## El banco de afirmaciones
+
+El banco inicial tiene 28 afirmaciones (7 por tema) en [`data/statements.json`](data/statements.json). Cada una trae la respuesta, el concepto que evalúa, una explicación y el error de concepto que delata:
 
 ```json
 {
@@ -140,55 +245,38 @@ El banco inicial está en [`data/statements.json`](data/statements.json) (28 afi
   "data": "IC del 95 % para μ: (12 ; 15)",
   "concept": "Interpretación del nivel de confianza",
   "explanation": "El 95 % describe el método, no este intervalo…",
-  "misconception": "Confundir el nivel de confianza con certeza…",
-  "active": true
+  "misconception": "Confundir el nivel de confianza con certeza…"
 }
 ```
 
-Temas: `1` Estimación, `2` Prueba de hipótesis, `3` Regresión lineal, `4` ANOVA. Las rondas se intercalan por tema (1, 2, 3, 4, 1, 2…).
+Los temas son `1` Estimación, `2` Prueba de hipótesis, `3` Regresión lineal y `4` ANOVA, y las rondas se intercalan entre ellos. Desde el panel se pueden editar, agregar o desactivar afirmaciones; esos cambios se guardan en la persistencia sin tocar el archivo.
 
-Desde el panel (pestaña **Banco**) se puede editar, agregar, desactivar, importar/exportar JSON y restaurar el original. Lo guardado en el panel queda en la persistencia (Key Value o `.data/`) y no modifica el archivo.
-
----
-
-## 6. Desplegar en Render
-
-El repositorio incluye un Blueprint ([`render.yaml`](render.yaml)) con el servicio web `statbet` y el Key Value `statbet-kv`.
-
-1. Sube el proyecto a GitHub.
-2. En Render: **New → Blueprint**, conecta el repositorio y escribe la `MODERATOR_KEY` cuando la pida.
-3. Al terminar abre `https://statbet.onrender.com/moderador` (o la URL que asigne Render).
-
-Notas:
-
-- El plan **free** se duerme tras 15 minutos sin tráfico y tarda unos segundos en despertar. Abre el panel 5 minutos antes de la clase, o cambia a **starter** para que no se duerma.
-- El Key Value conserva las salas y el banco aunque el servicio se reinicie o se redespliegue. Sin `REDIS_URL` se usan archivos en `.data/`, que en Render se pierden con cada despliegue.
-- `/healthz` responde el estado del servidor y de la persistencia.
-
----
-
-## 7. Estructura
+## Estructura del proyecto
 
 ```
 src/
-  server.js, app.js, config.js      servidor HTTP + Socket.IO, rutas, exportaciones
-  lib/                              utilidades (errores, códigos, logs, límite de peticiones)
+  app.js, server.js, config.js     servidor HTTP, Socket.IO y configuración
   modules/
-    persistence/                    Key Value (ioredis) o archivos JSON
-    statements/                     banco de afirmaciones: validación, selección, edición
-    rooms/                          salas, jugadores, configuración
-    market/marketEngine.js          rondas: abrir, apostar, cerrar, revelar, rescate, pausa
-    scoring/                        calibración, nota, cuadrantes, insignias, reporte del curso
-    realtime/                       vistas por rol (la verdad nunca llega antes de revelar) y sockets
-    exports/                        CSV, Excel y JSON del informe
+    market/                        motor de rondas: abrir, apostar, cerrar, revelar, rescate
+    scoring/                       Brier, nota, cuadrantes, insignias e informe del curso
+    realtime/                      vistas por rol y eventos en tiempo real
+    rooms/  statements/            salas, jugadores y banco de afirmaciones
+    persistence/  exports/         Key Value o archivos; CSV, Excel y JSON
 public/
-  js/views/                         estudiante, proyector, moderador, banco, informe (Preact + htm, sin build)
-  js/components/market3d.js         mesa 3D del proyector (three.js)
-  css/                              sistema visual rosa / cian
-data/statements.json                banco inicial
-scripts/                            validación del banco y prueba de carga
-tests/                              node:test
-docs/DECISIONES.md                  decisiones de diseño
+  js/views/                        estudiante, proyector, panel, editor del banco, informe
+  js/components/market3d.js        escena 3D del proyector
+  css/                             sistema visual
+data/statements.json               banco inicial
+scripts/                           validación del banco y prueba de carga
+tests/                             pruebas con node:test
 ```
 
-Decisiones de diseño y su justificación: [`docs/DECISIONES.md`](docs/DECISIONES.md).
+<br/>
+
+<div align="center">
+
+Desarrollado por **[Mariana Azabache](https://www.linkedin.com/in/mariana-azabache-b1334b371/)** · Tecnología en Desarrollo de Software, UNIMINUTO
+
+<img src="https://capsule-render.vercel.app/api?type=waving&height=110&color=0:22d3ee,55:a78bfa,100:ff4f9a&section=footer" alt="" width="100%"/>
+
+</div>
